@@ -1,0 +1,17 @@
+/.clangd
+/.log
+/compile_commands.json
+
+/.cache
+# /.cache/*
+# !/.cache/compdb
+
+*.bkp
+\#*\#
+
+/.rh-trusted
+
+/bazel-*
+
+/packages/*/dist
+/packages/*/build
