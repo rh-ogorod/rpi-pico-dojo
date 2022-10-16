@@ -65,10 +65,11 @@
 (defun rpi-pico-dojo/config-lsp-clangd ()
   (setq rpi-pico-dojo/lsp-clients-clangd-args
         (copy-sequence lsp-clients-clangd-args))
-  ;; (add-to-list
-  ;;  'rpi-pico-dojo/lsp-clients-clangd-args
-  ;;  "--query-driver=/usr/bin/g*-11,/usr/bin/clang*-14"
-  ;;  t)
+  (add-to-list
+   'rpi-pico-dojo/lsp-clients-clangd-args
+   "--query-driver=**/arm-none-eabi-g*"
+   ;; "--query-driver=/usr/bin/arm-none-eabi-g*"
+   t)
 
   ;; (add-hook
   ;;  'lsp-after-open-hook
