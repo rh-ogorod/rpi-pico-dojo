@@ -1,8 +1,8 @@
-[submodule "@raspberrypi/pico-examples"]
-	path = external/raspberrypi-pico-examples
-	url = git@github.com:ramblehead/raspberrypi-pico-examples.git
-	branch = master
 [submodule "@raspberrypi/pico-sdk"]
-	path = external/raspberrypi-pico-sdk
+	path = external/raspberrypi-pico-sdk/package
 	url = git@github.com:ramblehead/raspberrypi-pico-sdk.git
+	branch = master
+[submodule "@raspberrypi/pico-examples"]
+	path = external/raspberrypi-pico-examples/package
+	url = git@github.com:ramblehead/raspberrypi-pico-examples.git
 	branch = master
