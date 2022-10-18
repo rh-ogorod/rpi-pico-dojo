@@ -10,10 +10,6 @@ readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 # shellcheck source=./conf.sh
 source "${SDPATH}/conf.sh"
 
-# export CC=gcc-11
-# export CXX=g++-11
-# export CPP=cpp-11
-
 export PICO_SDK_PATH=../../raspberrypi-pico-sdk/package
 
 cd "${BLD_PATH}"; echo + cd "${PWD}"
