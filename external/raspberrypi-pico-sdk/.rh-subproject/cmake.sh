@@ -11,15 +11,13 @@ readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 source "${SDPATH}/conf.sh"
 
 export PICO_SDK_PATH=../../raspberrypi-pico-sdk/package
-export PICO_TOOLCHAIN_PATH=../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi
 
 cd "${BLD_PATH}"; echo + cd "${PWD}"
 
 echo
 CMD=(cmake)
+CMD+=("-DCMAKE_INSTALL_PREFIX=${DST_PATH}")
 CMD+=("-DPICO_BOARD=pico_w")
-CMD+=("-DWIFI_SSID=Your_Network")
-CMD+=("-DWIFI_PASSWORD=Your_Password")
 CMD+=("-DPICO_STDIO_UART=false")
 CMD+=("-DPICO_STDIO_USB=true")
 CMD+=("-DCMAKE_EXPORT_COMPILE_COMMANDS=true")
