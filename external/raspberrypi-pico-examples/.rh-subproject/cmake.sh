@@ -15,6 +15,7 @@ source "${SDPATH}/conf.sh"
 # export CPP=cpp-11
 
 export PICO_SDK_PATH=../../raspberrypi-pico-sdk/package
+export PICO_TOOLCHAIN_PATH=../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi
 
 cd "${BLD_PATH}"; echo + cd "${PWD}"
 
