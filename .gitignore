@@ -13,5 +13,4 @@
 
 /bazel-*
 
-/packages/*/dist
-/packages/*/build
+/tools/arm-gnu-toolchain-*

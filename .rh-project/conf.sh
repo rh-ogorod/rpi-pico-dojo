@@ -1,6 +1,10 @@
 #!/bin/bash
 # shellcheck disable=SC2219,SC2034
 
+export TOOLCHAIN_ARC=arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
+export TOOLCHAIN_URL=https://developer.arm.com/-/media/Files/downloads/gnu/`
+  `11.3.rel1/binrel/${TOOLCHAIN_ARC}
+
 NPROC=$(nproc)
 
 # # Get available RAM in MiB
