@@ -15,6 +15,10 @@ readonly BLD_PATH="${PRJ_ROOT_PATH}/build"
 readonly SRC_PATH="${PRJ_ROOT_PATH}/package"
 readonly DST_PATH="${PRJ_ROOT_PATH}/dist"
 
+readonly ARM_NONE_EABI_TOOLCHAIN=`
+  `"../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi"
+export ARM_NONE_EABI_TOOLCHAIN
+
 BOOST_BUILD_CMD=(headers)
 # BOOST_BUILD_CMD+=(stage)
 BOOST_BUILD_CMD+=(install)
@@ -25,14 +29,13 @@ BOOST_BUILD_CMD+=("--prefix=${DST_PATH}")
 # BOOST_BUILD_CMD+=("--build-type=complete")
 BOOST_BUILD_CMD+=("--build-dir=${BLD_PATH}")
 BOOST_BUILD_CMD+=("--layout=versioned")
-# BOOST_BUILD_CMD+=(toolset=gcc-11~c++17)
-BOOST_BUILD_CMD+=("toolset=gcc-11~c++20")
+# BOOST_BUILD_CMD+=("toolset=gcc-11~c++17")
+# BOOST_BUILD_CMD+=("toolset=gcc-11~c++20")
+BOOST_BUILD_CMD+=("toolset=gcc-11~arm_none_eabi_c++20")
 BOOST_BUILD_CMD+=("variant=release")
-BOOST_BUILD_CMD+=("threading=multi")
-BOOST_BUILD_CMD+=("link=static,shared")
-# BOOST_BUILD_CMD+=("link=shared")
-# BOOST_BUILD_CMD+=("link=static")
-# BOOST_BUILD_CMD+=("runtime-link=static")
-BOOST_BUILD_CMD+=("--with-test")
+BOOST_BUILD_CMD+=("threading=single")
+BOOST_BUILD_CMD+=("link=static")
+BOOST_BUILD_CMD+=("runtime-link=static")
+# BOOST_BUILD_CMD+=("--with-test")
 BOOST_BUILD_CMD+=("--with-system")
 BOOST_BUILD_CMD+=("--with-headers")

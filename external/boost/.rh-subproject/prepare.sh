@@ -28,7 +28,3 @@ CMD=(echo)
 CMD+=('"using gcc : 11~c++20 : g++-11 : <cxxflags>-std=c++20 ;"')
 CMD+=(">> tools/build/src/user-config.jam")
 echo + "${CMD[@]}" && eval "${CMD[@]}"
-
-echo
-CMD=(mkdir -vp "${BLD_PATH}")
-echo + "${CMD[@]}" && "${CMD[@]}"

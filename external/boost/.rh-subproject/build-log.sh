@@ -15,6 +15,10 @@ if [[ ! -f "${SRC_PATH}/b2" ]]; then
   echo + "${CMD[@]}" && "${CMD[@]}"
 fi
 
+echo
+CMD=(mkdir -vp "${BLD_PATH}")
+echo + "${CMD[@]}" && "${CMD[@]}"
+
 cd "${SRC_PATH}"; echo + cd "${PWD}"
 
 CMD=(rm -f "$BLD_PATH/boost-b2.log")

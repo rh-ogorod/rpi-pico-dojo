@@ -6,3 +6,7 @@
 	path = external/raspberrypi-pico-examples/package
 	url = git@github.com:ramblehead/raspberrypi-pico-examples.git
 	branch = master
+[submodule "@rh-ogorod/boost"]
+	path = external/boost/package
+	url = git@github.com:rh-ogorod/boost.git
+	branch = @rh-ogorod/boost-1.80.0

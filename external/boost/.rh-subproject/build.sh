@@ -15,15 +15,19 @@ if [[ ! -f "${SRC_PATH}/b2" ]]; then
   echo + "${CMD[@]}" && "${CMD[@]}"
 fi
 
+echo
+CMD=(mkdir -vp "${BLD_PATH}")
+echo + "${CMD[@]}" && "${CMD[@]}"
+
 cd "${SRC_PATH}"; echo + cd "${PWD}"
 
-CMD=(rm -f "$BLD_PATH/b2.log")
+CMD=(rm -f "${BLD_PATH}/b2.log")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
 CMD=(./b2)
 CMD+=("${BOOST_BUILD_CMD[@]}")
-CMD+=('2>&1' '|' tee -a "$BLD_PATH/b2.log")
+CMD+=('2>&1' '|' tee -a "${BLD_PATH}/b2.log")
 echo + "${CMD[@]}" && eval "${CMD[@]}"
 
 echo
