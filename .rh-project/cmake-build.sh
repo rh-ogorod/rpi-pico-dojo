@@ -10,8 +10,12 @@ readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 # shellcheck source=./conf.sh
 source "${SDPATH}/conf.sh"
 
-cd "${SRC_PATH}"; echo + cd "${PWD}"
+cd "${BLD_PATH}"; echo + cd "${PWD}"
 
 echo
-CMD=(mkdir -vp "${BLD_PATH}")
+CMD=(cmake)
+CMD+=("--build")
+CMD+=(".")
+CMD+=("--")
+CMD+=("-j${NPROC}")
 echo + "${CMD[@]}" && "${CMD[@]}"

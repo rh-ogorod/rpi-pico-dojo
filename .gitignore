@@ -12,5 +12,6 @@
 /.rh-trusted
 
 /bazel-*
+/build
 
 /tools/arm-gnu-toolchain-*

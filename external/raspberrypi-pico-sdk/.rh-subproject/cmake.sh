@@ -13,6 +13,10 @@ source "${SDPATH}/conf.sh"
 export PICO_SDK_PATH=../../raspberrypi-pico-sdk/package
 export PICO_TOOLCHAIN_PATH=../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi
 
+echo
+CMD=(mkdir -vp "${BLD_PATH}")
+echo + "${CMD[@]}" && "${CMD[@]}"
+
 cd "${BLD_PATH}"; echo + cd "${PWD}"
 
 echo

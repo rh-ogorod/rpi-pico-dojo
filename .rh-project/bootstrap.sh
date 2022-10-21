@@ -12,11 +12,10 @@ cd "${SDPATH}"; echo cd "${PWD}"
 # shellcheck source=./conf.sh
 source "${SDPATH}/conf.sh"
 
-PRJ_ROOT_PATH="${SDPATH}/.."
-readonly PRJ_ROOT_PATH="$(cd "${PRJ_ROOT_PATH}" && pwd)"
-
 CMD=(./git-populate-submodules.sh)
 echo + "${CMD[@]}" && "${CMD[@]}"
+
+wait
 
 cd "${PRJ_ROOT_PATH}"; echo cd "${PWD}"
 

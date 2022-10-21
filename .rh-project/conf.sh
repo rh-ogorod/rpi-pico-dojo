@@ -1,9 +1,20 @@
 #!/bin/bash
 # shellcheck disable=SC2219,SC2034
 
-export TOOLCHAIN_ARC=arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz
-export TOOLCHAIN_URL=https://developer.arm.com/-/media/Files/downloads/gnu/`
+PRJ_ROOT_PATH="${SDPATH}/.."
+readonly PRJ_ROOT_PATH="$(cd "${PRJ_ROOT_PATH}" && pwd)"
+
+readonly TOOLCHAIN_NAME=arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi
+readonly TOOLCHAIN_ARC=${TOOLCHAIN_NAME}.tar.xz
+
+# shellcheck disable=SC2155
+readonly TOOLCHAIN_URL=https://developer.arm.com/-/media/Files/downloads/gnu/`
   `11.3.rel1/binrel/${TOOLCHAIN_ARC}
+
+readonly TOOLCHAIN_PATH=${PRJ_ROOT_PATH}/tools/${TOOLCHAIN_NAME}
+
+readonly BLD_PATH="${PRJ_ROOT_PATH}/build"
+readonly SRC_PATH="${PRJ_ROOT_PATH}/packages"
 
 NPROC=$(nproc)
 
@@ -23,9 +34,6 @@ NPROC_BAZ=$(let m=${NPROC}-1; ((m > 0)) && echo $m || echo 1)
 
 # export CC=gcc-11
 # export CXX=g++-11
-
-# PRJ_ROOT_PATH="${SDPATH}/.."
-# readonly PRJ_ROOT_PATH="$(cd "${PRJ_ROOT_PATH}" && pwd)"
 
 # readonly NRAM_BAZ='HOST_RAM*.9'
 
