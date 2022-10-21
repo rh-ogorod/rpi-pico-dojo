@@ -1,5 +1,5 @@
 add_executable(picow_blink
-        picow_blink.c
+        src/picow_blink.c
         )
 
 target_link_libraries(picow_blink

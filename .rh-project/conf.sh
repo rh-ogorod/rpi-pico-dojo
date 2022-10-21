@@ -14,7 +14,6 @@ readonly TOOLCHAIN_URL=https://developer.arm.com/-/media/Files/downloads/gnu/`
 readonly TOOLCHAIN_PATH=${PRJ_ROOT_PATH}/tools/${TOOLCHAIN_NAME}
 
 readonly BLD_PATH="${PRJ_ROOT_PATH}/build"
-readonly SRC_PATH="${PRJ_ROOT_PATH}/packages"
 
 NPROC=$(nproc)
 

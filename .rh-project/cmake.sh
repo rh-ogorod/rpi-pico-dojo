@@ -28,5 +28,5 @@ CMD+=("-DPICO_STDIO_UART=false")
 CMD+=("-DPICO_STDIO_USB=true")
 CMD+=("-DCMAKE_EXPORT_COMPILE_COMMANDS=true")
 CMD+=("-DCMAKE_VERBOSE_MAKEFILE=true")
-CMD+=(${SRC_PATH})
+CMD+=(${PRJ_ROOT_PATH})
 echo + "${CMD[@]}" && "${CMD[@]}"
