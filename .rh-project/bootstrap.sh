@@ -17,6 +17,7 @@ echo + "${CMD[@]}" && "${CMD[@]}"
 
 wait
 
+echo
 cd "${PRJ_ROOT_PATH}"; echo cd "${PWD}"
 
 echo
@@ -27,6 +28,7 @@ echo
 CMD=(mkdir -vp .cache)
 echo + "${CMD[@]}" && "${CMD[@]}"
 
+echo
 cd "${PRJ_ROOT_PATH}/.cache"; echo cd "${PWD}"
 
 echo
