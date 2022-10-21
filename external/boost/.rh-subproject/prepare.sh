@@ -46,7 +46,3 @@ CMD+=('"\nusing gcc : 11~arm_none_eabi_c++20 :\n`
   `<cxxflags>-std=c++20 ;"')
 CMD+=(">> tools/build/src/user-config.jam")
 echo + "${CMD[@]}" && eval "${CMD[@]}"
-
-#using gcc : 11~arm_none_eabi_c++20 :
-#$(ARM_NONE_EABI_TOOLCHAIN)/bin/arm-none-eabi-g++ :
-#<cxxflags>-std=c++20 ;
