@@ -11,6 +11,8 @@ readonly SDPATH="$(cd -P "${SDPATH}" && pwd)"
 source "${SDPATH}/conf.sh"
 
 export PICO_SDK_PATH=${PRJ_ROOT_PATH}/external/raspberrypi-pico-sdk/package
+# export BOOST_ROOT=${PRJ_ROOT_PATH}/external/boost/dist
+
 export PICO_TOOLCHAIN_PATH=${TOOLCHAIN_PATH}
 
 echo
