@@ -16,22 +16,32 @@ pico_sdk_init()
 
 # include(example_auto_set_url.cmake)
 
-# set(Boost_NO_SYSTEM_PATHS ON)
 # set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/external/boost/dist CACHE INTERNAL "")
 # set($ENV{BOOST_ROOT} ${PROJECT_SOURCE_DIR}/external/boost/dist)
+# set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/external/boost/package)
 
 # message($ENV{BOOST_ROOT})
 
-set(Boost_DIR ${PROJECT_SOURCE_DIR}/external/boost/dist/lib/cmake/Boost-1.80.0)
-set(boost_headers_DIR ${PROJECT_SOURCE_DIR}/external/boost/dist/lib/cmake/boost_headers-1.80.0)
-set(boost_system_DIR ${PROJECT_SOURCE_DIR}/external/boost/dist/lib/cmake/boost_system-1.80.0)
+set(BOOST_VERSION 1.80.0)
+set(BOOST_ROOT ${PROJECT_SOURCE_DIR}/external/boost/dist)
 
+set(Boost_DIR ${BOOST_ROOT}/lib/cmake/Boost-${BOOST_VERSION})
+set(boost_headers_DIR ${BOOST_ROOT}/lib/cmake/boost_headers-${BOOST_VERSION})
+set(boost_system_DIR ${BOOST_ROOT}/lib/cmake/boost_system-${BOOST_VERSION})
+
+#set(Boost_DIR ${PROJECT_SOURCE_DIR}/external/boost/dist/lib/cmake/Boost-1.80.0)
+#set(boost_headers_DIR ${PROJECT_SOURCE_DIR}/external/boost/dist/lib/cmake/boost_headers-1.80.0)
+#set(boost_system_DIR ${PROJECT_SOURCE_DIR}/external/boost/dist/lib/cmake/boost_system-1.80.0)
+
+set(Boost_NO_SYSTEM_PATHS ON)
+set(Boost_USE_STATIC_LIBS ON)
 set(Boost_USE_STATIC_RUNTIME ON)
 set(Boost_USE_MULTITHREADED OFF)
 
 find_package(Boost
-  1.80.0 EXACT REQUIRED
+  ${BOOST_VERSION} EXACT REQUIRED
   COMPONENTS system
+  # PATHS ${PROJECT_SOURCE_DIR}/external/boost/dist/**
   )
 
 add_compile_options(-Wall
