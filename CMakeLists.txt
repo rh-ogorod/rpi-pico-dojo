@@ -40,7 +40,7 @@ set(Boost_USE_MULTITHREADED OFF)
 
 find_package(Boost
   ${BOOST_VERSION} EXACT REQUIRED
-  COMPONENTS system
+  COMPONENTS ALL
   # PATHS ${PROJECT_SOURCE_DIR}/external/boost/dist/**
   )
 
