@@ -5,10 +5,13 @@ add_executable(picow_blink
   )
 
 target_link_libraries(picow_blink
-  pico_stdlib              # for core functionality
-  pico_cyw43_arch_none     # we need Wifi to access the GPIO, but we don't need anything else
+  # for core functionality
+  pico_stdlib
+  # we need Wifi to access the GPIO, but we don't need anything else
+  pico_cyw43_arch_none
   Boost::headers
   Boost::system
+  range-v3::range-v3
   )
 
 # create map/bin/hex file etc.

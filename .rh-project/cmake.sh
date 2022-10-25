@@ -15,6 +15,9 @@ export PICO_SDK_PATH=${PRJ_ROOT_PATH}/external/raspberrypi-pico-sdk/package
 
 export PICO_TOOLCHAIN_PATH=${TOOLCHAIN_PATH}
 
+# export CMAKE_C_COMPILER=${TOOLCHAIN_PATH}/bin/arm-none-eabi-gcc
+# export CMAKE_CXX_COMPILER=${TOOLCHAIN_PATH}/bin/arm-none-eabi-g++
+
 echo
 CMD=(mkdir -vp "${BLD_PATH}")
 echo + "${CMD[@]}" && "${CMD[@]}"
