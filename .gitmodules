@@ -11,6 +11,6 @@
 	url = git@github.com:rh-ogorod/boost.git
 	branch = @rh-ogorod/boost-1.80.0
 [submodule "@ericniebler/range-v3"]
-	path = external/range-v3
+	path = external/range-v3/package
 	url = git@github.com:ericniebler/range-v3.git
 	branch = master

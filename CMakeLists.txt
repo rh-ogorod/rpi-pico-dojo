@@ -38,14 +38,31 @@ set(Boost_USE_STATIC_RUNTIME ON)
 set(Boost_USE_MULTITHREADED OFF)
 
 find_package(Boost
-  ${BOOST_VERSION} EXACT REQUIRED
   COMPONENTS ALL
   )
 
-set(RANGES_VERBOSE_BUILD ON)
-set(RANGE_V3_PATH ${PROJECT_SOURCE_DIR}/external/range-v3)
+#set(RANGES_VERBOSE_BUILD ON)
+#set(RANGE_V3_PATH ${PROJECT_SOURCE_DIR}/external/range-v3)
 
-add_subdirectory(${RANGE_V3_PATH})
+#add_subdirectory(${RANGE_V3_PATH})
+
+set(RANGE_V3_VERSION 0.12.0)
+set(RANGE_V3_ROOT ${PROJECT_SOURCE_DIR}/external/range-v3/dist)
+
+set(range-v3_DIR ${RANGE_V3_ROOT}/lib/cmake/range-v3)
+
+find_package(
+  range-v3 ${RANGE_V3_VERSION} EXACT CONFIG REQUIRED
+)
+
+if (range-v3_FOUND)
+  message(
+    STATUS
+    "Found range-v3: "
+    "${range-v3_CONFIG} "
+    "(found version \"${range-v3_VERSION}\")"
+  )
+endif()
 
 add_compile_options(-Wall
   -Wno-format          # int != int32_t as far as the compiler is concerned because gcc has int32_t as long int

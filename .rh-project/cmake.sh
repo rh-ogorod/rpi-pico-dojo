@@ -26,6 +26,7 @@ cd "${BLD_PATH}"; echo + cd "${PWD}"
 
 echo
 CMD=(cmake)
+CMD+=("-DPICO_PLATFORM=rp2040")
 CMD+=("-DPICO_BOARD=pico_w")
 # CMD+=("-DWIFI_SSID=Your_Network")
 # CMD+=("-DWIFI_PASSWORD=Your_Password")
