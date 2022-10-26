@@ -14,3 +14,15 @@
 	path = external/range-v3/package
 	url = git@github.com:ericniebler/range-v3.git
 	branch = master
+[submodule "@tee3/commands_to_compilation_database"]
+	path = external/commands_to_compilation_database
+	url = git@github.com:tee3/commands_to_compilation_database.git
+	branch = master
+[submodule "@rh-ogorod/bazelbuild-rules-compdb"]
+	path = external/bazelbuild-rules-compdb
+	url = git@github.com:rh-ogorod/bazelbuild-rules-compdb.git
+	branch = main
+[submodule "@rh-ogorod/js-configs"]
+	path = external/js-configs
+	url = git@github.com:rh-ogorod/js-configs.git
+	branch = main

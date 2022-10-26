@@ -3,7 +3,8 @@
 
 readonly SRC_BRANCH=@rh-ogorod/boost-1.80.0
 
-readonly NPROC=$(let m=$(nproc)-1; ((m > 0)) && echo $m || echo 1)
+# readonly NPROC=$(let m=$(nproc)-1; ((m > 0)) && echo $m || echo 1)
+readonly NPROC=$(nproc)
 
 PRJ_PATH="${SDPATH}"
 readonly PRJ_PATH="$(cd "${PRJ_PATH}" && pwd)"

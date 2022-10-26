@@ -31,5 +31,5 @@ CMD+=('2>&1' '|' tee -a "${BLD_PATH}/b2.log")
 echo + "${CMD[@]}" && eval "${CMD[@]}"
 
 echo
-CMD=("${SDPATH}/build-log.sh")
+CMD=("${SDPATH}/b2-log.sh")
 echo + "${CMD[@]}" && "${CMD[@]}"

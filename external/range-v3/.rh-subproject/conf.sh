@@ -18,4 +18,4 @@ readonly PICO_TOOLCHAIN_PATH=${TOOLCHAIN_PATH}
 readonly BLD_PATH="${PRJ_ROOT_PATH}/build"
 readonly DST_PATH="${PRJ_ROOT_PATH}/dist"
 
-NPROC=$(nproc)
+readonly NPROC=$(nproc)

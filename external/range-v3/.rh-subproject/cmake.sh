@@ -23,7 +23,7 @@ echo
 CMD=(cmake)
 CMD+=("-DCMAKE_INSTALL_PREFIX=${DST_PATH}")
 CMD+=("-DPICO_BOARD=pico_w")
-# CMD+=("-DCMAKE_EXPORT_COMPILE_COMMANDS=true")
+CMD+=("-DCMAKE_EXPORT_COMPILE_COMMANDS=true")
 CMD+=("-DCMAKE_VERBOSE_MAKEFILE=true")
 CMD+=(..)
 echo + "${CMD[@]}" && "${CMD[@]}"
