@@ -78,13 +78,13 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
 
  echo
  CMD=(sed -i -E)
- CMD+=('s!\\\\\"arm-none-eabi-gcc\\\\\"!/home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc!g')
+ CMD+=('s!\\\\\"arm-none-eabi-gcc\\\\\"!tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc!g')
  CMD+=("${BOOST_COMPDB_PATH_1}")
  echo + "${CMD[@]}" && eval "${CMD[@]}"
 
  echo
  CMD=(sed -i -E)
- CMD+=('s!\\\\\"arm-none-eabi-g\\+\\+\\\\\"!/home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++!g')
+ CMD+=('s!\\\\\"arm-none-eabi-g\\+\\+\\\\\"!tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++!g')
  CMD+=("${BOOST_COMPDB_PATH_1}")
  echo + "${CMD[@]}" && eval "${CMD[@]}"
 
@@ -110,23 +110,17 @@ readonly MAIN_COMPDB_PATH="${COMPDB_TMPD_PATH}/main-compile_commands.json"
  CMD=(cp "${MAIN_COMPDB_PATH_1}" "${MAIN_COMPDB_PATH_2}")
  echo + "${CMD[@]}" && "${CMD[@]}"
 
- # # Replace compiler calls like:
- # # /home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc
- # # with "gcc"
- # echo
- # CMD=(sed -i -E)
- # CMD+=('s/\\/.+arm-none-eabi-gcc/arm-none-eabi-gcc/g')
- # CMD+=("${MAIN_COMPDB_PATH_2}")
- # echo + "${CMD[@]}" && eval "${CMD[@]}"
+ echo
+ CMD=(sed -i -E)
+ CMD+=('s!\\/.+arm-none-eabi-gcc!tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc!g')
+ CMD+=("${MAIN_COMPDB_PATH_2}")
+ echo + "${CMD[@]}" && eval "${CMD[@]}"
 
- # # Replace compiler calls like:
- # # /home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++
- # # with "g++"
- # echo
- # CMD=(sed -i -E)
- # CMD+=('s/\\/.+arm-none-eabi-g++/arm-none-eabi-g++/g')
- # CMD+=("${MAIN_COMPDB_PATH_2}")
- # echo + "${CMD[@]}" && eval "${CMD[@]}"
+ echo
+ CMD=(sed -i -E)
+ CMD+=('s!\\/.+arm-none-eabi-g\\+\\+!tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++!g')
+ CMD+=("${MAIN_COMPDB_PATH_2}")
+ echo + "${CMD[@]}" && eval "${CMD[@]}"
 
  echo
  CMD=("${UNBOX}")
