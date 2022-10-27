@@ -33,9 +33,10 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
 (echo
  readonly BOOST_SRC_PATH="$(cd external/boost/package && pwd)"
  readonly BOOST_BUILD_LOG_0="$(realpath external/boost/build/boost-b2.log)"
- readonly BOOST_BUILD_LOG_1="${COMPDB_TMPD_PATH}/boost-b2.log"
+ readonly BOOST_BUILD_LOG_1="${COMPDB_TMPD_PATH}/boost-b2-1.log"
+ readonly BOOST_BUILD_LOG_2="${COMPDB_TMPD_PATH}/boost-b2.log"
  readonly BOOST_COMPDB_PATH_1="${COMPDB_TMPD_PATH}/`
-   `boost-compile_commands_1.json"
+   `boost-compile_commands-1.json"
  readonly BOOST_COMPDB_CONFIG_PATH="$(realpath unbox-bazel.config.js)"
 
  CMD=(cp "${BOOST_BUILD_LOG_0}" "${BOOST_BUILD_LOG_1}")
@@ -44,8 +45,29 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
  CMD=(chmod "a-x,a+r" "${BOOST_BUILD_LOG_1}")
  echo + "${CMD[@]}" && "${CMD[@]}"
 
+ CMD=(cp "${BOOST_BUILD_LOG_1}" "${BOOST_BUILD_LOG_2}")
+ echo + "${CMD[@]}" && "${CMD[@]}"
+
+ # Replace compiler calls like:
+ # "../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc"
+ # with "gcc"
  echo
- CMD=(cat "${BOOST_BUILD_LOG_1}")
+ CMD=(sed -i -E)
+ CMD+=('s/\".+-gcc\"/\"gcc\"/g')
+ CMD+=("${BOOST_BUILD_LOG_2}")
+ echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+ # Replace compiler lines like:
+ # "../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++"
+ # with "g++"
+ echo
+ CMD=(sed -i -E)
+ CMD+=('s/\".+-g\\+\\+\"/\"g++\"/g')
+ CMD+=("${BOOST_BUILD_LOG_2}")
+ echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+ echo
+ CMD=(cat "${BOOST_BUILD_LOG_2}")
  CMD+=('|')
  CMD+=("${C2CDB}")
  CMD+=("--compilers=gcc,g++")
