@@ -53,7 +53,7 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
  # with "gcc"
  echo
  CMD=(sed -i -E)
- CMD+=('s/\".+-gcc\"/\"gcc\"/g')
+ CMD+=('s/\".+arm-none-eabi-gcc\"/\"arm-none-eabi-gcc\"/g')
  CMD+=("${BOOST_BUILD_LOG_2}")
  echo + "${CMD[@]}" && eval "${CMD[@]}"
 
@@ -62,7 +62,7 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
  # with "g++"
  echo
  CMD=(sed -i -E)
- CMD+=('s/\".+-g\\+\\+\"/\"g++\"/g')
+ CMD+=('s/\".+arm-none-eabi-g\\+\\+\"/\"arm-none-eabi-g++\"/g')
  CMD+=("${BOOST_BUILD_LOG_2}")
  echo + "${CMD[@]}" && eval "${CMD[@]}"
 
@@ -70,10 +70,22 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
  CMD=(cat "${BOOST_BUILD_LOG_2}")
  CMD+=('|')
  CMD+=("${C2CDB}")
- CMD+=("--compilers=gcc,g++")
+ CMD+=("--compilers=arm-none-eabi-gcc,arm-none-eabi-g++")
  CMD+=('--build-tool=Boost.Build')
  CMD+=("--root-directory=${BOOST_SRC_PATH}")
  CMD+=("--output-filename=${BOOST_COMPDB_PATH_1}")
+ echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+ echo
+ CMD=(sed -i -E)
+ CMD+=('s!\\\\\"arm-none-eabi-gcc\\\\\"!/home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc!g')
+ CMD+=("${BOOST_COMPDB_PATH_1}")
+ echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+ echo
+ CMD=(sed -i -E)
+ CMD+=('s!\\\\\"arm-none-eabi-g\\+\\+\\\\\"!/home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++!g')
+ CMD+=("${BOOST_COMPDB_PATH_1}")
  echo + "${CMD[@]}" && eval "${CMD[@]}"
 
  echo
@@ -84,10 +96,51 @@ readonly BOOST_COMPDB_PATH="${COMPDB_TMPD_PATH}/boost-compile_commands.json"
  CMD+=("${BOOST_COMPDB_CONFIG_PATH}")
  echo + "${CMD[@]}" && "${CMD[@]}")
 
+readonly MAIN_COMPDB_PATH="${COMPDB_TMPD_PATH}/main-compile_commands.json"
+
+(echo
+ readonly MAIN_COMPDB_PATH_0="$(realpath build/compile_commands.json)"
+ readonly MAIN_COMPDB_PATH_1="${COMPDB_TMPD_PATH}/main-compile_commands-1.json"
+ readonly MAIN_COMPDB_PATH_2="${COMPDB_TMPD_PATH}/main-compile_commands-2.json"
+ readonly MAIN_COMPDB_CONFIG_PATH="$(realpath unbox-bazel.config.js)"
+
+ CMD=(cp "${MAIN_COMPDB_PATH_0}" "${MAIN_COMPDB_PATH_1}")
+ echo + "${CMD[@]}" && "${CMD[@]}"
+
+ CMD=(cp "${MAIN_COMPDB_PATH_1}" "${MAIN_COMPDB_PATH_2}")
+ echo + "${CMD[@]}" && "${CMD[@]}"
+
+ # # Replace compiler calls like:
+ # # /home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-gcc
+ # # with "gcc"
+ # echo
+ # CMD=(sed -i -E)
+ # CMD+=('s/\\/.+arm-none-eabi-gcc/arm-none-eabi-gcc/g')
+ # CMD+=("${MAIN_COMPDB_PATH_2}")
+ # echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+ # # Replace compiler calls like:
+ # # /home/rh/box/backyard/garden/rpi-pico-w-dojo/tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin/arm-none-eabi-g++
+ # # with "g++"
+ # echo
+ # CMD=(sed -i -E)
+ # CMD+=('s/\\/.+arm-none-eabi-g++/arm-none-eabi-g++/g')
+ # CMD+=("${MAIN_COMPDB_PATH_2}")
+ # echo + "${CMD[@]}" && eval "${CMD[@]}"
+
+ echo
+ CMD=("${UNBOX}")
+ CMD+=("${MAIN_COMPDB_PATH}")
+ CMD+=("${MAIN_COMPDB_PATH_2}")
+ CMD+=("${PRJ_ROOT_PATH}")
+ CMD+=("${MAIN_COMPDB_CONFIG_PATH}")
+ echo + "${CMD[@]}" && "${CMD[@]}")
+
 echo
 CMD=("${MERGE}")
 CMD+=(-o "${COMPDB_TMPD_PATH}/compile_commands.json")
 CMD+=("${BOOST_COMPDB_PATH}")
+CMD+=("${MAIN_COMPDB_PATH}")
 echo + "${CMD[@]}" && "${CMD[@]}"
 
 echo
