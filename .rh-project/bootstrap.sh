@@ -34,7 +34,7 @@ echo + "${CMD[@]}" && "${CMD[@]}"
  cd "${PRJ_ROOT_PATH}/.cache"; echo + cd "${PWD}"
 
  echo
- CMD=(wget --no-clobber "${TOOLCHAIN_URL}")
+ CMD=(wget -nc "${TOOLCHAIN_URL}")
  echo + "${CMD[@]}" && "${CMD[@]}")
 
 (echo
@@ -44,9 +44,10 @@ echo + "${CMD[@]}" && "${CMD[@]}"
  CMD=(tar --skip-old-files -xJf "${PRJ_ROOT_PATH}/.cache/${TOOLCHAIN_ARC}")
  echo + "${CMD[@]}" && "${CMD[@]}"
 
- echo
- CMD=(rm "${PRJ_ROOT_PATH}/.cache/${TOOLCHAIN_ARC}")
- echo + "${CMD[@]}" && "${CMD[@]}")
+ # echo
+ # CMD=(rm "${PRJ_ROOT_PATH}/.cache/${TOOLCHAIN_ARC}")
+ # echo + "${CMD[@]}" && "${CMD[@]}"
+)
 
 echo
 CMD=(./pre-build.sh)
