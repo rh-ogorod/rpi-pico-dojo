@@ -3,11 +3,7 @@
 
 readonly SRC_BRANCH=@rh-ogorod/boost-1.80.0
 
-# readonly NPROC=$(let m=$(nproc)-1; ((m > 0)) && echo $m || echo 1)
 readonly NPROC=$(nproc)
-
-PRJ_PATH="${SDPATH}"
-readonly PRJ_PATH="$(cd "${PRJ_PATH}" && pwd)"
 
 PRJ_ROOT_PATH="${SDPATH}/.."
 readonly PRJ_ROOT_PATH="$(cd "${PRJ_ROOT_PATH}" && pwd)"
@@ -16,8 +12,9 @@ readonly BLD_PATH="${PRJ_ROOT_PATH}/build"
 readonly SRC_PATH="${PRJ_ROOT_PATH}/package"
 readonly DST_PATH="${PRJ_ROOT_PATH}/dist"
 
-readonly ARM_NONE_EABI_TOOLCHAIN=`
-  `"../../../tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi"
+ARM_NONE_EABI_TOOLCHAIN="${PRJ_ROOT_PATH}/../../`
+  `tools/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi"
+readonly ARM_NONE_EABI_TOOLCHAIN=$(cd "${ARM_NONE_EABI_TOOLCHAIN}" && pwd)
 export ARM_NONE_EABI_TOOLCHAIN
 
 BOOST_BUILD_CMD=(headers)

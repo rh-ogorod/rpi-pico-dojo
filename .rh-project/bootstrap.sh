@@ -44,3 +44,11 @@ echo + "${CMD[@]}" && "${CMD[@]}"
 echo
 CMD=(rm "${PRJ_ROOT_PATH}/.cache/${TOOLCHAIN_ARC}")
 echo + "${CMD[@]}" && "${CMD[@]}"
+
+echo
+CMD=(./cmake.sh)
+echo + "${CMD[@]}" && "${CMD[@]}"
+
+echo
+CMD=(./cmake-build.sh)
+echo + "${CMD[@]}" && "${CMD[@]}"
