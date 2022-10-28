@@ -34,7 +34,7 @@ echo + "${CMD[@]}" && "${CMD[@]}"
  cd "${PRJ_ROOT_PATH}/.cache"; echo + cd "${PWD}"
 
  echo
- CMD=(wget -c "${TOOLCHAIN_URL}")
+ CMD=(wget --no-clobber "${TOOLCHAIN_URL}")
  echo + "${CMD[@]}" && "${CMD[@]}")
 
 (echo
