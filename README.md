@@ -2,7 +2,7 @@
 
 Raspberry Pi Pico W C++20 Framework.
 
-This is early experimental work that has only been tested on [ubuntu 20.04](https://releases.ubuntu.com/focal/)
+This is an experimental work that has only been tested on [ubuntu 20.04](https://releases.ubuntu.com/focal/)
 
 The framework is based around [cmake](https://cmake.org/) and standard [arm-none-eabi](https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz) toolchain.
 
