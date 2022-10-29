@@ -8,7 +8,9 @@ The framework is based around [cmake](https://cmake.org/) and standard [arm-none
 
 Additionally to [pico-sdk](https://github.com/raspberrypi/pico-sdk), [ppico-examples](https://github.com/raspberrypi/pico-examples) it integrates [boost](https://github.com/boostorg/boost), [range-v3](https://github.com/ericniebler/range-v3)
 
-```
+## Installation instructions
+
+```sh
 git clone git@github.com:rh-ogorod/rpi-pico-w-dojo.git
 cd rpi-pico-w-dojo
 ./bootstrap.sh
